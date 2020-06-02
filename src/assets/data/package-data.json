@@ -1,0 +1,69 @@
+{
+    "silver": [
+        {
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "550"
+        },
+        {
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "700"
+        },
+        {
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "450"
+        },
+        {
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "600"
+        }
+    ],
+    "gold": [
+        {
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "1000"
+        },
+        {
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "1100"
+        },
+        {
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "950"
+        },
+        {
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "1000"
+        }
+    ],
+    "platinum": [
+        {
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "550"
+        },
+        {
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "700"
+        },
+        {
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "450"
+        },
+        {
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "600"
+        }
+    ]
+}
+

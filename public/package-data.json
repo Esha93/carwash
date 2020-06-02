@@ -1,0 +1,84 @@
+{
+    "silver": [
+        {
+            "id": 3,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "450"
+        },
+        {
+            "id": 4,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "600"
+        },
+        {
+            "id": 1,
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "550"
+        },
+        {
+            "id": 2,
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "700"
+        }
+        
+    ],
+    "gold": [
+        {
+            "id": 7,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "950"
+        },
+        {
+            "id": 8,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "1000"
+        },
+        {
+            "id": 5,
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "1100"
+        },
+        {
+            "id": 6,
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "1200"
+        }
+        
+    ],
+    "platinum": [
+        {
+            "id": 11,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "1200"
+        },
+        {
+            "id": 12,
+            "carType": "SEDAN",
+            "carSize": "Small",
+            "price": "1300"
+        },
+        {
+            "id": 9,
+            "carType": "SUV",
+            "carSize": "Small",
+            "price": "1350"
+        },
+        {
+            "id": 10,
+            "carType": "SUV",
+            "carSize": "Medium",
+            "price": "1500"
+        }
+        
+    ]
+}
+

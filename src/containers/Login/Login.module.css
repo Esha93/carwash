@@ -1,0 +1,32 @@
+
+.Modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    z-index: 100;
+    width: 40%;
+    background-color: rgb(214, 194, 194);
+ 
+}
+
+.Input, .Label, .Button {
+    display: block;
+    margin: 15px auto;
+}
+
+.Modal .socialLogin {
+    box-sizing: border-box;
+    width: 55%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+/* .kep-login-facebook {
+    padding: 16px;
+} */

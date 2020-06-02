@@ -1,0 +1,32 @@
+p {
+    width: 90%;
+    margin: auto;
+}
+.Packages {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.CardHeader {
+    text-align: center;
+    font-weight: bold;
+}
+
+.ListItem {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.ListItem a {
+    text-decoration: none;
+    padding: 3px 20px 5px;
+    border-radius: 35px;
+    display: block;
+    background-color: rgb(92, 92, 146);
+    color: white;
+    text-align: center;
+}
+
+
