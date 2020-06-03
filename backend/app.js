@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const loginAuth = require('./routes/login-auth');
 const mongoose = require('mongoose');
+const order = require('./routes/order');
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS, PUT");
     next();
 });
-// console.log(loginAuth);
+
 app.use('/login', loginAuth);
+app.use('/order', order);
+
 module.exports = app;

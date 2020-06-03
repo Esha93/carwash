@@ -55,7 +55,7 @@ const packages = (props) => {
                             {item.carType}
                             <small>({item.carSize})</small> 
                             @{item.price}/- 
-                            <Link onClick={props.clicked}>Book</Link>
+                            <Link to={{pathname: '/cart', carDetails: item}}>Book</Link>
                         </ListGroup.Item>
                     ))}
                     
@@ -75,7 +75,7 @@ const packages = (props) => {
                                 {item.carType}
                                 <small>({item.carSize})</small> 
                                 @{item.price}/- 
-                                <Link to={{pathname: '/contact-data', carDetails: item}}>Book</Link>
+                                <Link to={{pathname: '/cart', carDetails: item}}>Book</Link>
                             </ListGroup.Item>
                     ))}
                 </ListGroup>
@@ -94,7 +94,7 @@ const packages = (props) => {
                                 {item.carType}
                                 <small>({item.carSize})</small> 
                                 @{item.price}/- 
-                                <Link to={{pathname: '/contact-data', carDetails: item}}>Book</Link>
+                                <Link to={{pathname: '/cart', carDetails: item}}>Book</Link>
                             </ListGroup.Item>
                     ))}
                 </ListGroup>

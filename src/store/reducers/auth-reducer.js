@@ -1,17 +1,18 @@
 
 const initialState = {
-    cartValue: 0
+    isAuthenticated: false,
+    userId: null
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case('add') : 
+        case('login') : 
             return {
-                cartValue: state.cartValue + 1
+                isAuthenticated : state
             }
-        case('remove') : 
+        case('google-login') : 
             return {
-                cartValue: state.cartValue - 1
+                isAuthenticated : state
             }
         default: return state;
     }

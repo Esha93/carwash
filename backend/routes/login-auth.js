@@ -1,25 +1,12 @@
 const express = require('express');
-const User = require('../models/valid-users');
+const jwt = require('jsonwebtoken');
+const User = require('../models/users');
 
 const router = express.Router();
 
-router.post('/auth', (req, res, next) => {
-    // console.log(users);
-    let user = User.filter((user) => {
-        // console.log(req.body.email, user.name, req.body.password, user.password);
-        return user.email == req.body.email && user.password == req.body.password;
-    });
-    console.log(user);
-    if(user.length) {
-        res.status(200).json({messages: 'successful'});
-    } else {
-        res.status(401).json({messages: 'unsuccessful'});
-    }  
-});
-
 router.post('/adduser', (req, res, next) => {
     
-    console.log(req.body);
+    // console.log(req.body);
     const user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -33,22 +20,28 @@ router.post('/adduser', (req, res, next) => {
             user: {...result, id: result._id}
         })
     })
-    // if(user.length) {
-    //     res.status(200).json({messages: 'User Already exists'});
-    // } else {
-    //     users.push({email: req.body.email, password: req.body.password})
-    //     res.status(401).json({messages: 'unsuccessful'});
-    // }
 })
 
-router.get('/auth', (req, res, next) => {
-    const usersList = Post.find();
-    console.log(usersList);
-    // let user = usersList.filter((user) => {
-    //     // console.log(req.body.email, user.name, req.body.password, user.password);
-    //     return user.email == req.body.email && user.password == req.body.password;
-    // });
-
+router.post('/auth', (req, res, next) => {
+    const usersList = User.find();
+    let usersArr;
+    usersList.then(users => {
+        usersArr = users;
+        console.log(usersArr);
+        let user = usersArr.filter((user) => {
+            return user.email == req.body.email && user.password == req.body.password;
+        });
+        
+        if(user.length) {
+            let token_payload = {name: user[0].name, password: user[0].password};
+            let token = jwt.sign(token_payload, "jwt_secret_password", { expiresIn: '2h' });
+            let response = { message: 'Token Created, Authentication Successful!', token: token, 
+                userId: user[0]._id};
+            res.status(200).json(response);
+        } else {
+            res.status(401).json({messages: 'unsuccessful'});
+        } 
+    });
 });
 
 module.exports = router;

@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter  } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from '../src/store/reducers/cart-reducer';
+import reducer from './store/reducers/auth-reducer';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer);
@@ -14,9 +14,9 @@ const store = createStore(reducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

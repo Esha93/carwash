@@ -16,14 +16,15 @@
     text-align: center;
 }
 
-.ListItem button {
+.ListItem a {
     text-decoration: none;
-    padding: 3px 10px 5px;
+    padding: 3px 20px 5px;
     border-radius: 35px;
     display: block;
     background-color: rgb(92, 92, 146);
     color: white;
     text-align: center;
 }
+
 
 

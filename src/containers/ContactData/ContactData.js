@@ -1,9 +1,11 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
+import { Form, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import OrderSummary from '../../components/OrderSummary/OrderSummary';
 import classes from './ContactData.module.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 
 class ContactData extends React.Component {
     state = {
@@ -44,13 +46,12 @@ class ContactData extends React.Component {
     }
 
     render() {
-        return (
-            <div className={classes.Form}>
-                <h6>Your Order is :</h6>
-                {this.props.location.carDetails ? 
-                    <OrderSummary carDetails={this.props.location.carDetails}/> :
-                    this.props.history.push('/')}
-                <hr />
+        let orderSummary;
+        if(this.props.location.carDetails) {
+            orderSummary = <>
+            <h6>Your Order : </h6>
+            <OrderSummary carDetails={this.props.location.carDetails}/>
+            <hr />
                 <h6>Contact Details:</h6>
                 <form onSubmit={this.submithandler}>
                     <Form.Group controlId="formBasicEmail">
@@ -59,31 +60,50 @@ class ContactData extends React.Component {
                             onChange={this.nameChangeHandler} value={this.state.name}/>
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Email Id</Form.Label>
-                        <Form.Control type="email" placeholder="Enter Email id" required name="email"
-                            onChange={this.emailChangeHandler} value={this.state.email}/>
-                    </Form.Group>
-
                     <Form.Group controlId="formBasicAddress">
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="textarea" placeholder="Enter Address" required name="address"
                             onChange={this.addressChangeHandler} value={this.state.address}/>
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicContact">
-                        <Form.Label>Contact No</Form.Label>
-                        <Form.Control type="number" placeholder="Enter Contact no." required name="contactNo"
-                            onChange={this.contactChangeHandler} value={this.state.contactNo}/>
-                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formBasicPassword">
+                            <Form.Label>Email Id</Form.Label>
+                            <Form.Control type="email" placeholder="Enter Email id" required name="email"
+                                onChange={this.emailChangeHandler} value={this.state.email}/>
+                        </Form.Group>
+                    
+                        <Form.Group as={Col} controlId="formBasicContact">
+                            <Form.Label>Contact No</Form.Label>
+                            <Form.Control type="number" placeholder="Enter Contact no." required name="contactNo"
+                                onChange={this.contactChangeHandler} value={this.state.contactNo}/>
+                        </Form.Group>
+                    </Form.Row>
 
                     <Button variant="primary" type="submit" >
                         Submit
                     </Button>
                 </form>
+            </>
+        } else {
+
+            orderSummary = <>
+                <h5>Cart is empty !!!</h5>
+                <Button onClick={() => this.props.history.push('/packages')}>
+                    Click here to book a wash</Button>
+                </>
+            
+        }
+        return (
+            <div className={classes.Form}>
+                
+                {orderSummary}
+                
             </div>
         )
     }
 }
+
+
 
 export default ContactData;

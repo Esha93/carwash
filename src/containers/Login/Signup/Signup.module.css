@@ -1,20 +1,17 @@
 
 .Modal {
     position: absolute;
-    top: 70px;
-    left: 25%;
-    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(214, 194, 194);
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 0px 30px;
     box-sizing: border-box;
-    width: 50%;
+    width: 60%;
     margin: auto;
-    height: 100%
+    
 }
 
-.FormGroup {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
+import { Form, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import classes from './Signup.module.css';
@@ -58,44 +58,52 @@ class Signup extends React.Component {
     render () {
         return (
             <div >
-                <form className={classes.Modal} onSubmit={this.signupHandler}>
-                    <Form.Group controlId="formBasicFirstName">
+                <Form className={classes.Modal} onSubmit={this.signupHandler}>
+                    <Form.Row style={{marginTop: '15px'}}>
+                    <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter First Name" required
                             onChange={this.firstNameChangeHandler}/>
                     </Form.Group>
-                    <Form.Group controlId="formBasicLastName">
+                    <Form.Group as={Col} controlId="formGridLastName">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Last Name" required
                             onChange={this.lastNameChangeHandler}/>
                     </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
+                    </Form.Row>
+                    <Form.Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" required
                             onChange={this.emailChangeHandler}/>
                         
                     </Form.Group>
-                    <Form.Group controlId="formBasicContactNumber">
+                    <Form.Group as={Col} controlId="formGridContactNumber">
                         <Form.Label>Contact Number</Form.Label>
                         <Form.Control type="number" placeholder="Enter Contact Number" required
                             onChange={this.contactNumberChangeHandler}/>
                     </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
+                    </Form.Row>
+                    <Form.Row>
+                    <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter Password" required
                             onChange={this.passwordChangeHandler}/>
                     </Form.Group>
-                    <Form.Group controlId="formBasicConfirmPassword">
+                    <Form.Group as={Col} controlId="formGridConfirmPassword">
                         <Form.Label> Confirm Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter Password" required
                             onChange={this.confirmPasswordChangeHandler}/>
                     </Form.Group>
+                    </Form.Row>
+                    <div style={{textAlign: 'center'}}>
                     <Form.Group>
                     <Button variant="info" type="submit">
                         SIGN UP
                     </Button>
                     </Form.Group>
-                </form>
+                    </div>
+                </Form>
             </div>
         )
     }

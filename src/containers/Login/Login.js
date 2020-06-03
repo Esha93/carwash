@@ -2,15 +2,15 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-// import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-import GooogleAuthorize from 'react-google-authorize';
 import classes from './Login.module.css';
+import Nav from 'react-bootstrap/Nav';
 
 class Login extends React.Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        user: true
     }
     
     emailChangeHandler = (event) => {
@@ -24,7 +24,13 @@ class Login extends React.Component {
         event.preventDefault();
         const login = {email: this.state.email, password: this.state.password};
         axios.post('http://localhost:8000/login/auth', login)
-            .then(res => console.log(res)).catch(err => console.log(err));
+            .then(res => {
+                console.log(res);
+                this.props.history.push('/');
+            })
+            .catch(err => {
+                alert('Please enter valid credentials');
+            });
     }
 
     signupHandler = (event) => {
@@ -37,13 +43,47 @@ class Login extends React.Component {
   
     responseGoogle = (response) => {
         console.log(response);
-        this.props.history.goBack();
+        console.log(response.profileObj);
+        // this.props.history.goBack();
     }
 
+    selectHandler = (eventKey, activeKey) => {
+        eventKey === 'user' ? this.setState({user: true}) : this.setState({user: false})
+    }
+
+
     render () {
+        let dispGoogleLogin = null;
+        if(this.state.user) {
+            dispGoogleLogin = <div>
+                <GoogleLogin className={classes.socialLogin} 
+                    clientId="206827218168-8m9l1vjrj55b1ne2qc2r1anls3v8sj6o.apps.googleusercontent.com" 
+                    buttonText="LOGIN WITH GOOGLE"
+                    onSuccess={this.responseGoogle}
+                    onFailure={this.responseGoogle}
+                    cookiePolicy={'single_host_origin'}   
+                />
+        
+                <div>Not having account ?   
+                    <Button size="sm" variant="secondary" type="button" style={{marginLeft: '15px'}}
+                        onClick={this.signupHandler} >SIGN UP</Button>
+                </div>
+                </div>
+        } 
+
         return (
-            <div className={classes.Modal} >
+            <div className={classes.Modal}>
+                <Nav variant="tabs" onSelect={this.selectHandler} defaultActiveKey="user"
+                    style={{marginBottom: '20px'}}>
+                    <Nav.Item>
+                        <Nav.Link eventKey="user">User</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="admin">Admin</Nav.Link>
+                    </Nav.Item>
+                </Nav>
                 <form onSubmit={this.loginHandler}>
+                    
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" required
@@ -60,27 +100,8 @@ class Login extends React.Component {
                         LOGIN
                     </Button>
                     </Form.Group>
-               
-                    {/* <FacebookLogin 
-                        appId="" //APP ID NOT CREATED YET
-                        fields="name,email,picture"
-                        callback={this.responseFacebook}
-                    /> */}
-
-                    <GooogleAuthorize className={classes.socialLogin} 
-                        clientId="413523546698-icnld97bf2lqcrhce5hrii0mg6h1t9b5.apps.googleusercontent.com" 
-                        buttonText="LOGIN WITH GOOGLE"
-                        onSuccess={this.responseGoogle}
-                        onFailure={this.responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                       
-                    />
-            
-                    <div>Not having account ?   
-                        <Button size="sm" variant="secondary" type="button" style={{marginLeft: '15px'}}
-                            onClick={this.signupHandler} >SIGN UP</Button>
-                    </div>
                 </form>
+                {dispGoogleLogin}
             </div>
         )
     }
